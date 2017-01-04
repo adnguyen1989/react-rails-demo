@@ -1,4 +1,6 @@
-class FilterableProductTable extends React.Component {
+import React, { Component, PropTypes } from 'react';
+
+export default class FilterableProductTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,4 +27,3 @@ class FilterableProductTable extends React.Component {
     );
   }
 }
-

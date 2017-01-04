@@ -1,4 +1,6 @@
-class ProductTable extends React.Component {
+import React, { Component, PropTypes } from 'react';
+
+export default class ProductTable extends Component {
   render () {
     var rows = [];
     var last_category = null;
@@ -27,4 +29,3 @@ class ProductTable extends React.Component {
     )
   }
 }
-
