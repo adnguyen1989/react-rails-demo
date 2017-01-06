@@ -9,4 +9,45 @@ class StaticController < ApplicationController
       {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
     ]
   end
+
+  def hunts
+    @hunts = [
+      {
+        id: 1,
+        title: 'Yellow Pail',
+        description: 'On-demand sand castle construction expertise.',
+        url: '#',
+        votes: 23,
+        submitter_avatar_url: 'images/avatars/daniel.jpg',
+        product_image_url: 'images/products/image-aqua.png'
+      },
+      {
+        id: 2,
+        title: 'Red Pail',
+        description: 'On-demand sand castle construction expertise.',
+        url: '#',
+        votes: 2,
+        submitter_avatar_url: 'images/avatars/daniel.jpg',
+        product_image_url: 'images/products/image-aqua.png'
+      },
+      {
+        id: 3,
+        title: 'Red Pail',
+        description: 'On-demand sand castle construction expertise.',
+        url: '#',
+        votes: 0,
+        submitter_avatar_url: 'images/avatars/daniel.jpg',
+        product_image_url: 'images/products/image-aqua.png'
+      },
+      {
+        id: 4,
+        title: 'Red Pail',
+        description: 'On-demand sand castle construction expertise.',
+        url: '#',
+        votes: -1,
+        submitter_avatar_url: 'images/avatars/daniel.jpg',
+        product_image_url: 'images/products/image-aqua.png'
+      }
+    ]
+  end
 end

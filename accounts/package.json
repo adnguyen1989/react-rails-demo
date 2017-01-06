@@ -9,10 +9,6 @@
   "scripts": {
     "test": "mocha spec/javascripts/setUp.js spec/**/*Spec.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/suzan2go/react-rails-redux-sample.git"
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
