@@ -10,6 +10,10 @@ class StaticController < ApplicationController
     ]
   end
 
+  def timers
+    @data = []
+  end
+
   def hunts
     @hunts = [
       {
