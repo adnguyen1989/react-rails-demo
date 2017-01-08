@@ -16,3 +16,4 @@ global.EditableTimer = require( 'components/editable_timer.es6.jsx' ).default;
 global.Timer = require( 'components/timer.es6.jsx' ).default;
 global.TimerForm = require( 'components/timer_form.es6.jsx' ).default;
 global.ToggleableTimerForm = require( 'components/toggleable_timer_form.es6.jsx' ).default;
+global.TimerActionButton = require( 'components/timer_action_button.es6.jsx' ).default;
