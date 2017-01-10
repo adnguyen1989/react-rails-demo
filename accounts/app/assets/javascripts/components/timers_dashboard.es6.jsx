@@ -1,32 +1,31 @@
 import React, { Component, PropTypes } from 'react';
+require('client');
 
 export default class TimersDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timers:
-      [
-        {
-          title: 'Practice squat',
-          project: 'Gym Chores',
-          id: Math.floor((Math.random() * 10000) + 1),
-          elapsed: 5456099,
-          runningSince: Date.now(),
-        },
-        {
-          title: 'Bake squash',
-          project: 'Kitchen Chores',
-          id: Math.floor((Math.random() * 10000) + 1),
-          elapsed: 1273998,
-          runningSince: null,
-        }
-      ]
+      timers: []
     };
     this.handleCreateFormSubmit = this.handleCreateFormSubmit.bind(this);
     this.handleUpdateFormSubmit = this.handleUpdateFormSubmit.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     this.handleStopClick = this.handleStopClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadTimersFromServer();
+    setInterval(this.loadTimersFromServer, 5000);
+  }
+
+  loadTimersFromServer(){
+    var client = new Client();
+    client.getTimers((serverTimers) => (
+      this.setState({
+        timers: serverTimers
+      })
+    ));
   }
 
   handleStartClick(id){

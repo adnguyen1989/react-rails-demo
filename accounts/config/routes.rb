@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   get '/products' => "static#products"
   get '/hunts' => "static#hunts"
   get '/timers' => "static#timers"
+
+  namespace :api do
+    resources :timers
+  end
 end

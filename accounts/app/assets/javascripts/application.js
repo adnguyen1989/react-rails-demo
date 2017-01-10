@@ -11,4 +11,6 @@
 // about supported directives.
 //
 //= require react_ujs
+//= require client
 //= require components
+

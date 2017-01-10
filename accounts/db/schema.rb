@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102142321) do
+ActiveRecord::Schema.define(version: 20170109120042) do
 
-  create_table "clocks", force: :cascade do |t|
-    t.string   "timezone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "timers", force: :cascade do |t|
+    t.string   "title"
+    t.string   "project"
+    t.integer  "elapsed",      default: 0
+    t.bigint   "runningSince"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
 end

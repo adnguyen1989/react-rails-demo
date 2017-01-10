@@ -105,8 +105,6 @@ export default class Timer extends React.Component {
           {action_buttons}
         </div>
 
-
-
         <TimerActionButton timerIsRunning={!!this.props.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} />
       </div>
     );

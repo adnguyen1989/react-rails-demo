@@ -29,6 +29,8 @@
     "redux": "^3.0.4",
     "redux-thunk": "^2.1.0",
     "browserify": "^13.1.1",
-    "browserify-incremental": "^3.0.1"
+    "browserify-incremental": "^3.0.1",
+    "whatwg-fetch": "^2.0.1",
+    "promise-polyfill": "^6.0.2"
   }
 }
