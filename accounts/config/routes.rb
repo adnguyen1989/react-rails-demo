@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get '/hunts' => "static#hunts"
   get '/timers' => "static#timers"
 
+
   namespace :api do
+    post 'timers/stop' => "timers#stop"
+    post 'timers/start' => "timers#start"
     resources :timers
   end
 end

@@ -12,5 +12,7 @@
 //
 //= require react_ujs
 //= require client
+//= require jquery
+//= require jquery_ujs
 //= require components
 

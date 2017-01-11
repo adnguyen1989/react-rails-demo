@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-require('client');
+
 
 export default class TimersDashboard extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ export default class TimersDashboard extends React.Component {
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     this.handleStopClick = this.handleStopClick.bind(this);
+    this.loadTimersFromServer = this.loadTimersFromServer.bind(this);
   }
 
   componentDidMount() {
@@ -20,7 +21,6 @@ export default class TimersDashboard extends React.Component {
   }
 
   loadTimersFromServer(){
-    var client = new Client();
     client.getTimers((serverTimers) => (
       this.setState({
         timers: serverTimers
@@ -29,28 +29,30 @@ export default class TimersDashboard extends React.Component {
   }
 
   handleStartClick(id){
+    const now = Date.now()
     this.setState({
       timers: this.state.timers.map((timer) => {
         if (timer.id === id) {
           return Object.assign({}, timer, {
-            runningSince: Date.now(),
+            runningSince: now,
           })
         } else {
           return timer;
         }
       })
     })
+
+    client.startTimer({id: id, start: now})
   }
 
   handleStopClick(id){
-    // const now = Date.now()
-
+    const now = Date.now()
     this.setState({
       timers: this.state.timers.map((timer) => {
         if (timer.id === id) {
           // const lastElapsed = now - timer.runningSince;
           return Object.assign({}, timer, {
-            elapsed: timer.elapsed + Date.now() - timer.runningSince,
+            elapsed: timer.elapsed + now - timer.runningSince,
             runningSince: null,
           })
         } else {
@@ -58,12 +60,16 @@ export default class TimersDashboard extends React.Component {
         }
       })
     })
+
+    client.stopTimer({id: id, stop: now})
   }
 
   handleDeleteClick(id) {
     this.setState({
       timers: this.state.timers.filter(t => t.id !== id)
     })
+
+    client.deleteTimer(id, {id: id})
   }
 
   handleCreateFormSubmit(timer) {
@@ -83,17 +89,21 @@ export default class TimersDashboard extends React.Component {
         }
       })
     })
+
+    client.updateTimer(attrs.id, {title: attrs.title, project: attrs.project})
   }
 
   createTimer(timer) {
-    const t = this.newTimer(timer);
+    client.createTimer({title: timer.title, project: timer.project})
+    .then(this.loadTimersFromServer)
+    // const t = this.newTimer(timer);
 
-    this.setState({
-      timers: this.state.timers.concat(t),
-      function() {
-        console.log(this.state.timers);
-      }
-    })
+    // this.setState({
+    //   timers: this.state.timers.concat(t),
+    //   function() {
+    //     console.log(this.state.timers);
+    //   }
+    // })
 
   }
 
