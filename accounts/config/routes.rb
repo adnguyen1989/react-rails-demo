@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/products' => "static#products"
   get '/hunts' => "static#hunts"
   get '/timers' => "static#timers"
+  get '/switches' => "static#switches"
+  get '/forms' => "static#forms"
 
 
   namespace :api do

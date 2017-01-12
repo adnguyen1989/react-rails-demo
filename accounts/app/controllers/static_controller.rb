@@ -1,4 +1,11 @@
 class StaticController < ApplicationController
+  def switches
+  end
+
+  def forms
+
+  end
+
   def products
     @products = [
       {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},

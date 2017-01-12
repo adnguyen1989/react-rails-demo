@@ -1,16 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 
-import 'jquery'
-
-$('.ui.form')
-  .form({
-    fields: {
-      title: 'empty',
-    }
-  })
-;
-
 client = (function () {
   function getTimers(success) {
     return fetch('/api/timers', {
