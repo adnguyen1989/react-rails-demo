@@ -28,7 +28,6 @@ export default class Form3 extends React.Component {
 
   validate(){
     const person = this.state.fields;
-    console.log(person);
     const fieldErrors = this.state.fieldErrors;
     const errMessages = Object.keys(fieldErrors).filter((k) => fieldErrors[k]);
 
@@ -38,12 +37,15 @@ export default class Form3 extends React.Component {
     return false
   }
 
-  onInputChange(name, error, value){
+  onInputChange({name, error, value}){
+    console.log(name, value)
     const fields = this.state.fields;
     const fieldErrors = this.state.fieldErrors;
     fields[name] = value;
     fieldErrors[name] = error;
-    this.setState({ fields: fields, fieldErrors: fieldErrors });
+    this.setState({ fields: fields, fieldErrors: fieldErrors }, function(){
+      // console.log(this.state)
+    });
   }
 
   render () {
@@ -72,14 +74,22 @@ export default class Form3 extends React.Component {
 
           <br />
 
+          <CourseSelect
+            department={this.state.fields.department}
+            course={this.state.fields.course}
+            onChange={this.onInputChange}
+          />
+
+          <br />
+
           <input type='submit' disabled={this.validate()}/>
         </form>
 
         <div>
           <h3>People</h3>
           <ul>
-            { this.state.people.map(({ name, email }, i) =>
-              <li key={i}>{name} ({ email })</li>
+            { this.state.people.map(({ name, email, department, course }, i) =>
+              <li key={i}>{name} ({ email }) - {department} ({course})</li>
             ) }
           </ul>
         </div>

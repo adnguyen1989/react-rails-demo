@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     post 'timers/stop' => "timers#stop"
     post 'timers/start' => "timers#start"
+    get 'courses' => "courses#index"
     resources :timers
   end
 end

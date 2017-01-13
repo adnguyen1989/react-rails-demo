@@ -15,7 +15,7 @@ export default class Field extends React.Component {
     const value = evt.target.value
     const error = this.props.validate ? this.props.validate(value) : false
     this.setState({value: value, error: error})
-    this.props.onChange(this.props.name, error, value)
+    this.props.onChange({name: this.props.name, error: error, value: value})
   }
 
   componentWillReceiveProps(nextProps) {

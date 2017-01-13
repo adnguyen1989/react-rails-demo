@@ -21,5 +21,7 @@ global.Switch = require( 'components/switch.es6.jsx' ).default;
 global.Form1 = require( 'components/form1.es6.jsx' ).default;
 global.Form2 = require( 'components/form2.es6.jsx' ).default;
 global.Form3 = require( 'components/form3.es6.jsx' ).default;
+global.Form4 = require( 'components/form4.es6.jsx' ).default;
 global.Field = require( 'components/field.es6.jsx' ).default;
+global.CourseSelect = require( 'components/course_select.es6.jsx' ).default;
 // global.Switch = require( 'components/switch.es6.jsx' ).default;
