@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/products' => "static#products"
   get '/hunts' => "static#hunts"
@@ -14,5 +15,6 @@ Rails.application.routes.draw do
     get 'courses' => "courses#index"
     resources :timers
     resources :users
+    resources :foods
   end
 end
